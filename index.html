@@ -71,6 +71,73 @@
         padding-top: 100px; /* ajuste conforme altura do seu header */
         }
 
+        /* Estilo do ícone hambúrguer */
+        .hamburger {
+        cursor: pointer;
+        width: 30px;
+        height: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        }
+
+        .hamburger span {
+        display: block;
+        height: 4px;
+        background: #000;
+        border-radius: 2px;
+        }
+
+        /* Estilo do menu mobile */
+        /* .mobile_menu {
+        display: none;
+        background: #fff;
+        padding: 20px;
+        position: absolute;
+        width: 100%;
+        top: 100%;
+        left: 0;
+        z-index: 999;
+        }
+
+        .mobile_menu.active {
+        display: block;
+        } */
+
+        .mobile_menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+        background: #fff;
+        padding: 0 20px; /* Evita pular no efeito */
+        position: absolute;
+        width: 100%;
+        top: 100%;
+        left: 0;
+        z-index: 999;
+        }
+
+        /* Quando estiver ativo */
+        .mobile_menu.active {
+            max-height: 300px; /* Ajuste conforme a altura real do menu */
+            padding: 20px;
+        }
+
+        .mobile_menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        }
+
+        .mobile_menu ul li {
+        margin: 10px 0;
+        }
+
+        .mobile_menu ul li a {
+        color: #000;
+        text-decoration: none;
+        font-weight: bold;
+        }
 
 
 
@@ -104,8 +171,8 @@
                             <nav>
                                 <ul id="navigation">
                                     <li><a href="index.html">Home</a></li>
-                                    <li><a href="work.html">work</a></li>
-                                    <li><a href="service.html">service</a></li>
+                                    <li><a href="work.html">Work</a></li>
+                                    <li><a href="service.html">Service</a></li>
                                     <li><a href="contact.html">Contact</a></li>
                                 </ul>
                             </nav>
@@ -114,10 +181,24 @@
                         <div class="header-info-right d-none d-lg-block">
                             <a href="#" class="border-btn">Let's Talk</a>
                         </div>
-                        <!-- Mobile Menu -->
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
+                        <!-- Botão Hamburger -->
+                        <div class="hamburger d-lg-none">
+                            <span></span>
+                            <span></span>
+                            <span></span>
                         </div>
+                        <!-- Mobile Menu -->
+                        <div class="mobile_menu d-lg-none">
+                            <nav class="mobile-nav">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="work.html">Work</a></li>
+                                    <li><a href="service.html">Service</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -617,6 +698,17 @@
         $(".header-sticky").removeClass("sticky-bar");
         $("body").removeClass("sticky-active");
       }
+    });
+  </script>
+  
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile_menu');
+  
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      hamburger.classList.toggle('open');
     });
   </script>
   
